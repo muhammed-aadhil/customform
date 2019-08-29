@@ -1,0 +1,93 @@
+<!-- <?php
+
+/**
+ * @var \Learning\CustomForm\Block\Display $block
+ */
+
+//echo $block->sayHello();
+?> -->
+
+<div class="container">
+
+    <?php
+
+    $helper = $this->helper('Learning\CustomForm\Helper\Data');
+    $config = $helper->retrieveData();
+    //$firstNameHelper=$helper->getHelperFirstName();
+    //echo $helper->hello();
+    $config1 = $helper->retrieveData1();
+    // print_r($config);
+    // print_r($config1);
+    // exit;
+
+    ?>
+    <form action="<?php echo $block->getFormAction()?>" id="aadhil-test-form" method="post">
+        <?php echo $block->getBlockHtml('formkey')?>
+        <h2> Leanswift Contact Form</h2>
+
+        <br/>
+        <br/>
+        <?php if ($config1 == 1) {
+        ?>
+            <?php $arr = explode(',', $config);
+        //print_r($arr);
+        //exit;
+        foreach ($arr as $item) {
+            ?>
+                <?php if ($item == 'first_name') {
+                ?>
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="firstname" placeholder="Your first name..">
+                <?php
+            } else {
+                ?>
+                    <?php
+            } ?>
+                <?php if ($item == 'last_name') {
+                ?>
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                    <?php
+            } else {
+                ?>
+                    <?php
+            } ?>
+
+                <?php if ($item == 'mobile_number') {
+                ?>
+                    <label for="mob">Mobile Number</label>
+                    <input type="number" id="mob" name="mobile" placeholder="Your Mobile Number..">
+                    <?php
+            } else {
+                ?>
+                    <?php
+            } ?>
+                <?php if ($item == 'email') {
+                ?>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="mail" name="email" placeholder="Your Email ..">
+
+                    <?php
+            } else {
+                ?>
+                    <?php
+            } ?>
+
+                <?php if ($item == 'address') {
+                ?>
+                    <label for="address">Address</label>
+                    <textarea id="add" name="address" placeholder="Your address.." style="height:200px"></textarea>
+
+                <?php
+            } else {
+                ?>
+                <?php
+            }
+        } ?>
+
+        <input type="submit" value="Submit">
+<?php
+    } ?>
+    </form>
+</div>
